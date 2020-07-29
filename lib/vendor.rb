@@ -5,14 +5,14 @@ class Vendor
 
   def initialize(name)
     @name = name
-    @inventory = Hash.new()
+    @inventory = Hash.new(0)
   end
 
   def check_stock(arg)
-    if @inventory[:arg] == nil
-      return 0
-    else
-      @inventory[:arg]
-    end
+    @inventory[arg]
+  end
+
+  def stock(item, qty)
+    @inventory[item] += qty
   end
 end
