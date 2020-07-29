@@ -14,10 +14,14 @@ class Market
   end
 
   def vendor_names
-    names = []
-    @vendors.each do |vendor|
-      names << vendor.name
+    @vendors.map do |vendor|
+      vendor.name
     end
-    return names
+  end
+
+  def vendors_that_sell(item)
+    @vendors.find_all do |vendor|
+      vendor.check_stock(item) > 0
+    end
   end
 end
